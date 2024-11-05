@@ -16,6 +16,8 @@ const SignIn = () => {
       password: ''
     }
   )
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
 
   const submitForm = async () => {
     if( !form.email || !form.password) {
@@ -38,7 +40,6 @@ const SignIn = () => {
 
   }
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
 
   return (
     <SafeAreaView className='bg-primary h-full' >
