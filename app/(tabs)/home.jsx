@@ -1,39 +1,39 @@
-import { Text, FlatList, View, Image, RefreshControl } from 'react-native'
-import React, {useState}from 'react'
+import { Text, FlatList, View, Image, RefreshControl, Alert } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { images } from '../../constants'
 import SearchInput from '../../components/search_input'
 import Trending from '../../components/trending'
 import EmptyState from '../../components/empty_state'
+import { getAllPosts, getLatestPosts } from '../../lib/appwrite'
+import useAppwrite from '../../lib/use_appwrite'
+import VideoCard from '../../components/video_card'
 
 const Home = () => {
 
+  const { data: posts, refetch } = useAppwrite(getAllPosts)
+  const {data: latestPosts} = useAppwrite(getLatestPosts)
 
   const [refreshing, setRefreshing] = useState(false)
-  const onRefresh = () => {
+
+  const onRefresh = async () => {
     setRefreshing(true)
-
-    // recall videos to check if any new videos appear
-
-    setRefreshing(false) 
-    
+    await refetch();
+    setRefreshing(false)
   }
+
 
   return (
     <SafeAreaView className='bg-primary pb-5  h-full'>
       <FlatList
-        data={[
-          { id: 1, title: 'First Item' },
-          { id: 2, title: 'Second Item' },
-          { id: 3, title: 'Third Item' },
-        ]}
-       
+        data={posts}
+
         keyExtractor={(item) => item.$id}
 
         renderItem={({ item }) => (
-          <Text className='text-3xl text-white '>
-            {item.title}
-          </Text>
+          <VideoCard
+            video={item}
+          />
         )}
 
         ListHeaderComponent={() => (
@@ -54,7 +54,9 @@ const Home = () => {
                   source={images.logoSmall}
                 />
               </View>
+
             </View>
+
             <SearchInput placeholder={'Search for a video topic'} />
 
             <View className='w-full flex-1 pt-5 pb-8'>
@@ -62,7 +64,8 @@ const Home = () => {
                 Latest Videos
               </Text>
 
-              <Trending posts={[{ id: 1 }, { id: 2 }] ?? []} />
+              <Trending posts={latestPosts ?? []} />
+
             </View>
 
           </View>
