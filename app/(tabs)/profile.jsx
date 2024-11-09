@@ -1,26 +1,37 @@
-import { Text, FlatList, View, TouchableOpacity, Image, } from 'react-native'
+import { Text, FlatList, View, TouchableOpacity, Image, Alert, } from 'react-native'
 import React, { useEffect } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import SearchInput from '../../components/search_input'
 import EmptyState from '../../components/empty_state'
-import { getUserPosts, searchPosts } from '../../lib/appwrite'
+import { getUserPosts, searchPosts, signOut } from '../../lib/appwrite'
 import useAppwrite from '../../lib/use_appwrite'
 import VideoCard from '../../components/video_card'
-import { useLocalSearchParams } from 'expo-router'
+import { router, useLocalSearchParams } from 'expo-router'
 import { useGlobalContext } from './../../context/global_provider';
 import { icons } from '../../constants'
 import InfoBox from '../../components/info_box'
 
 const Profile = () => {
   const { user, setUser, setIsLoggedIn } = useGlobalContext()
-  const { data: posts, } = useAppwrite(() => getUserPosts(user.$id))
+  // console.log('user', user)
+  // console.log('user id', user?.$id)
+  const { data: posts } = useAppwrite(async () => await getUserPosts(user.$id))
 
-  const logout = () => {
+  const logout = async () => {
+    try {
+      await signOut();
+      setUser(null)
+      setIsLoggedIn(false)
 
+      router.replace('/sign-in')
+
+    } catch (error) {
+      Alert.alert('Error', error.message)
+    }
   }
 
   return (
-    <SafeAreaView className='bg-primary pb-5  h-full' >
+    <SafeAreaView className='bg-primary pb-5 h-full' >
       <FlatList
         data={posts}
 
@@ -61,7 +72,7 @@ const Profile = () => {
 
             <View className='mt-5 flex-row'>
               <InfoBox
-                title={posts.length || 0}
+                title={posts?.length || 0}
                 subtitle='Posts'
                 containerStyles='mr-10'
                 titleStyles='text-xl'

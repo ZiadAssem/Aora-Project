@@ -23,6 +23,7 @@ const RootLayout = () => {
     })
 
     useEffect(() => {
+        console.log('root layout mounted')
         if (error) {
             console.log(error)
             throw error

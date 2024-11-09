@@ -1,0 +1,50 @@
+{
+    "documents": [
+        {
+            "$collectionId": "67267f7200024462f0f7",
+            "$createdAt": "2024-11-05T11:05:23.194+00:00",
+            "$databaseId": "67267f240025b7ef4295",
+            "$id": "6729fbf300051c4d5533",
+            "$permissions": [Array
+            ],
+            "$updatedAt": "2024-11-06T13:57:43.666+00:00",
+            "creator": [Object
+            ],
+            "prompt": "Picture the future of coding with AI. Show AR VR",
+            "thumbnail": "https://i.ibb.co/Xkgk7DY/Video.png",
+            "title": "How AI Shapes Coding Future",
+            "video": "https://cloud.appwrite.io/v1/storage/buckets/672680bf000d3ffe37f4/files/672b75a10036d64895ee/view?project=67267cbb00188c11af5e&project=67267cbb00188c11af5e&mode=admin"
+        },
+        {
+            "$collectionId": "67267f7200024462f0f7",
+            "$createdAt": "2024-11-05T11:06:37.181+00:00",
+            "$databaseId": "67267f240025b7ef4295",
+            "$id": "6729fc3d0006dd4f1aba",
+            "$permissions": [Array
+            ],
+            "$updatedAt": "2024-11-06T13:55:52.612+00:00",
+            "creator": [Object
+            ],
+            "prompt": "Create a motivating AI driven video aimed at inspiring coding enthusiasts with simple language",
+            "thumbnail": "https://i.ibb.co/tJBcX20/Appwrite-video.png",
+            "title": "Get inspired to code",
+            "video": "https://cloud.appwrite.io/v1/storage/buckets/672680bf000d3ffe37f4/files/672b752e00025c89f73a/view?project=67267cbb00188c11af5e&project=67267cbb00188c11af5e&mode=admin"
+        },
+        {
+            "$collectionId": "67267f7200024462f0f7",
+            "$createdAt": "2024-11-05T11:07:17.212+00:00",
+            "$databaseId": "67267f240025b7ef4295",
+            "$id": "6729fc6500086cc69678",
+            "$permissions": [Array
+            ],
+            "$updatedAt": "2024-11-06T13:50:25.051+00:00",
+            "creator": [Object
+            ],
+            "prompt": "Create a heartwarming video following the travels of dalmatian dog exploring beautiful Italy",
+            "thumbnail": "https://i.ibb.co/CBYzyKh/Video-1.png",
+            "title": "Dalmatian's journey through Italy",
+            "video": "https://cloud.appwrite.io/v1/storage/buckets/672680bf000d3ffe37f4/files/672b73f60037a8deec2e/view?project=67267cbb00188c11af5e&project=67267cbb00188c11af5e&mode=admin"
+        }
+    ],
+    "total": 3
+}
