@@ -1,8 +1,9 @@
 import { View, Text, Image } from 'react-native'
 import React from 'react'
-import { Tabs, Redirect } from 'expo-router'
+import { Tabs } from 'expo-router'
 import { icons } from '../../constants'
 
+// Component for rendering tab icons
 const TabIcon = ({ icon, color, name, focused }) => {
     return (
         <View className='items-center justify-center gap-2'>
@@ -20,6 +21,7 @@ const TabIcon = ({ icon, color, name, focused }) => {
     )
 }
 
+// Main layout component for tabs
 const TabsLayout = () => {
     return (
         <>
@@ -36,11 +38,11 @@ const TabsLayout = () => {
                     }
                 }}
             >
+                {/* Home Tab */}
                 <Tabs.Screen name="home"
                     options={{
                         title: 'Home',
-                        headerShown: false
-                        ,
+                        headerShown: false,
                         tabBarIcon: ({ color, focused }) => (
                             <TabIcon
                                 icon={icons.home}
@@ -48,15 +50,14 @@ const TabsLayout = () => {
                                 name="Home"
                                 focused={focused}
                             />
-
                         )
                     }}
                 />
+                {/* Bookmark Tab */}
                 <Tabs.Screen name="bookmark"
                     options={{
                         title: 'Bookmark',
-                        headerShown: false
-                        ,
+                        headerShown: false,
                         tabBarIcon: ({ color, focused }) => (
                             <TabIcon
                                 icon={icons.bookmark}
@@ -64,15 +65,14 @@ const TabsLayout = () => {
                                 name="Bookmark"
                                 focused={focused}
                             />
-
                         )
                     }}
                 />
+                {/* Create Tab */}
                 <Tabs.Screen name="create"
                     options={{
-                        title: 'Creata',
-                        headerShown: false
-                        ,
+                        title: 'Create',
+                        headerShown: false,
                         tabBarIcon: ({ color, focused }) => (
                             <TabIcon
                                 icon={icons.plus}
@@ -80,15 +80,14 @@ const TabsLayout = () => {
                                 name="Create"
                                 focused={focused}
                             />
-
                         )
                     }}
                 />
+                {/* Profile Tab */}
                 <Tabs.Screen name="profile"
                     options={{
                         title: 'Profile',
-                        headerShown: false
-                        ,
+                        headerShown: false,
                         tabBarIcon: ({ color, focused }) => (
                             <TabIcon
                                 icon={icons.profile}
@@ -96,7 +95,6 @@ const TabsLayout = () => {
                                 name="Profile"
                                 focused={focused}
                             />
-
                         )
                     }}
                 />
@@ -105,4 +103,4 @@ const TabsLayout = () => {
     )
 }
 
-export default TabsLayout 
+export default TabsLayout
