@@ -8,11 +8,13 @@ import EmptyState from '../../components/empty_state'
 import { getAllPosts, getLatestPosts } from '../../lib/appwrite'
 import useAppwrite from '../../lib/use_appwrite'
 import VideoCard from '../../components/video_card'
+import { useGlobalContext } from '../../context/global_provider'
 
 const Home = () => {
   // Fetch posts data using custom hook
   const { data: posts, refetch } = useAppwrite(getAllPosts)
   const { data: latestPosts } = useAppwrite(getLatestPosts)
+
 
   // State for refresh control
   const [refreshing, setRefreshing] = useState(false)
@@ -23,14 +25,17 @@ const Home = () => {
     await refetch()
     setRefreshing(false)
   }
-
+  // console.log(posts[0]?.$id)
   return (
     <SafeAreaView className='bg-primary pb-5 h-full'>
       <FlatList
         data={posts}
         keyExtractor={(item) => item.$id}
         renderItem={({ item }) => (
-          <VideoCard video={item} />
+
+          <VideoCard video={item}
+         //  userId={user.$id}
+            />
         )}
         ListHeaderComponent={() => (
           <View className='my-6 px-4'>

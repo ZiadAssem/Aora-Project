@@ -2,13 +2,16 @@ import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { icons } from '../constants'
 import { Video,ResizeMode } from 'expo-av'
+import { likeOrUnlike } from '../lib/appwrite'
+import { useGlobalContext } from '../context/global_provider'
 
 
 
-const VideoCard = ({ video: { title, thumbnail, video, creator: { username, avatar } } }) => {
+const VideoCard = ({ video: { title, thumbnail, video, $id, creator: { username, avatar } }, }) => {
+    const { user } = useGlobalContext()
+    
 
     const [play, setPlay] = useState(false)
-
     return (
         <View className="flex-col items-center px-4 mb-14">
 
@@ -38,9 +41,13 @@ const VideoCard = ({ video: { title, thumbnail, video, creator: { username, avat
 
                 </View>
 
+                <TouchableOpacity onPress={()=>{
+                    likeOrUnlike(user.$id,$id)
+                }}>
                 <View className="pt-2">
                     <Image source={icons.menu} className="w-5 h-5" resizeMode='contain' />
                 </View>
+                </TouchableOpacity>
 
 
             </View>
